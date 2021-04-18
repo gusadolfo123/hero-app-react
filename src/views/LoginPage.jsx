@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../auth/AuthContext";
+import { ActionTypes } from "../types/actionTypes";
 import "./LoginPage.css";
 
 export const LoginPage = ({ history }) => {
+  const { dispatch } = useContext(AuthContext);
+
   const handleLogin = () => {
-    // history.push("/");
-    history.replace("/");
+    // // history.push("/");
+    // history.replace("/");
+
+    const lastPath = localStorage.getItem("lastPath") || "/";
+
+    dispatch({
+      type: ActionTypes.Login,
+      payload: {
+        name: "Gustavo Moreno",
+      },
+    });
+
+    history.replace(lastPath);
   };
 
   return (

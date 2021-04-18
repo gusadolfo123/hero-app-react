@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import { Redirect, useParams } from "react-router";
 import { getHeroById } from "../../../selectors/getHeroById";
 
+import { heroImages } from "../../../helpers/heroImages";
+
 export const HeroPage = ({ history }) => {
   const { id } = useParams();
   const hero = useMemo(() => getHeroById(id), [id]);
@@ -27,7 +29,8 @@ export const HeroPage = ({ history }) => {
     <div className="row mt-5">
       <div className="col-md-4">
         <img
-          src={`../assets/heroes/${id}.jpg`}
+          // src={`../assets/heroes/${id}.jpg`}
+          src={heroImages(`./${id}.jpg`).default}
           className="img-thumbnail"
           alt={superhero}
         />
